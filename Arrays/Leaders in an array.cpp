@@ -1,3 +1,5 @@
+//https://www.interviewbit.com/problems/leaders-in-an-array/
+
 vector<int> Solution::solve(vector<int> &A) {
     vector<int>res;
     int m=INT_MIN;

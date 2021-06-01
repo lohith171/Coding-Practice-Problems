@@ -1,3 +1,5 @@
+//https://www.interviewbit.com/problems/pick-from-both-sides/
+
 int Solution::solve(vector<int> &A, int B) {
     int m=INT_MIN;
     int sum=0,i,j;

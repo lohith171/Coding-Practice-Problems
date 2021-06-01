@@ -1,3 +1,5 @@
+//https://www.interviewbit.com/problems/perfect-peak-of-array/
+
 int Solution::perfectPeak(vector<int> &A) {
     set<int>s1,s2;
     if(A.size()<=2)return 0;

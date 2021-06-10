@@ -1,5 +1,3 @@
-//https://www.interviewbit.com/problems/cousins-in-binary-tree/
-
 /**
  * Definition for binary tree
  * struct TreeNode {
@@ -9,41 +7,56 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ int lev=-1;
+ TreeNode* n=NULL;
+ void Solve(TreeNode* r,int k,int l){
+     if(!r)return;
+     if(r->left){
+         if(r->left->val==k){
+             n=r;
+             lev=l+1;
+             return;
+         }
+     }
+     if(r->right){
+         if(r->right->val==k){
+             n=r;
+             lev=l+1;
+             return;
+         }
+     }
+     Solve(r->left,k,l+1);
+     Solve(r->right,k,l+1);
+ }
 vector<int> Solution::solve(TreeNode* A, int B) {
-    if(!A)return {};
+    Solve(A,B,0);
+    if(lev==-1 || n==NULL)return {};
     queue<pair<TreeNode*,int>>q;
-    map<int,vector<pair<TreeNode*,int>>>m;
+    vector<int>res;
     q.push({A,0});
-    int level;
-    TreeNode* r;
     while(!q.empty()){
         pair<TreeNode*,int>temp=q.front();
         q.pop();
-        TreeNode* n=temp.first;
-        int l=temp.second;
-        if(n->left){
-            m[l+1].push_back({n,n->left->val});
-            if(n->left->val==B){
-                level=l+1;
-                r=n;
+        TreeNode* node=temp.first;
+        int level=temp.second;
+        if(level==lev-1){
+            if(node!=n){
+                if(node->left){
+                    res.push_back(node->left->val);
+                }
+                if(node->right){
+                    res.push_back(node->right->val);
+                }
             }
-            q.push({n->left,l+1});
         }
-        if(n->right){
-             m[l+1].push_back({n,n->right->val});
-            if(n->right->val==B){
-                level=l+1;
-                r=n;
-            }
-            q.push({n->right,l+1});
+        if(node->left){
+            q.push({node->left,level+1});
         }
-    }
-    vector<int>res;
-    vector<pair<TreeNode*,int>>v=m[level];
-    for(auto x:v){
-        if(x.first!=r){
-            res.push_back(x.second);
+        if(node->right){
+            q.push({node->right,level+1});
         }
+        
     }
     return res;
+    
 }

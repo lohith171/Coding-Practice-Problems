@@ -14,14 +14,14 @@
      if(r->left){
          if(r->left->val==k){
              n=r;
-             lev=l+1;
+             lev=l;
              return;
          }
      }
      if(r->right){
          if(r->right->val==k){
              n=r;
-             lev=l+1;
+             lev=l;
              return;
          }
      }
@@ -39,7 +39,7 @@ vector<int> Solution::solve(TreeNode* A, int B) {
         q.pop();
         TreeNode* node=temp.first;
         int level=temp.second;
-        if(level==lev-1){
+        if(level==lev){
             if(node!=n){
                 if(node->left){
                     res.push_back(node->left->val);

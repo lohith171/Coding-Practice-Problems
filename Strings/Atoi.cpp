@@ -43,7 +43,7 @@ int Solution::atoi(const string A) {
             long long int k=res*(-1);
             if(k<=INT_MIN)return INT_MIN;
         }else{
-            if(res>+INT_MAX)return INT_MAX;
+            if(res>=INT_MAX)return INT_MAX;
         }
         i++;
     }

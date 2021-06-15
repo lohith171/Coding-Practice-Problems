@@ -21,15 +21,15 @@ int Solution::solve(vector<int> &A) {
             }
         }
     }
-    vector<int>res;
+    int m=INT_MIN;
     for(int i=0;i<=sum/2;i++){
-        if(dp[A.size()][i]!=0)res.push_back(i);
+       if(dp[A.size()][i]==true){
+           m=max(m,i);
+       }
     }
-    int m=INT_MAX;
-    for(int i=0;i<res.size();i++){
-        m=min(m,sum-(2*res[i]));
-    }
-    return m;
+    
+    return sum-2*m;
     
     
 }
+

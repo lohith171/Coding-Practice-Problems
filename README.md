@@ -1,2 +1,2 @@
-# Interview-Bit-Problems
+# Coding-Problems
 practice

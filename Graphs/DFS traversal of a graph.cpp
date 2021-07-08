@@ -14,12 +14,13 @@ class Solution
 	    
 	   
 	}
-	vector<int>dfsOfGraph(int V, vector<int> adj[])
-	{
+      vector<int>dfsOfGraph(int V, vector<int> adj[]){
 	    // Code here
 	    vector<bool>visi(V,false);
 	    vector<int>res;
-	    dfs(0,adj,visi,res);
+	    for(int i=0;i<V;i++){
+	        dfs(i,adj,visi,res);
+	    }
 	    return res;
 	}
 };

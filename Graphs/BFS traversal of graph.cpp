@@ -7,22 +7,23 @@ class Solution
 	vector<int>bfsOfGraph(int V, vector<int> adj[])
 	{
 	    // Code here
-	    queue<int>q;
-	    q.push(0);
 	    vector<int>res;
 	    vector<bool>visi(V,0);
+	    queue<int>q;
+	    q.push(0);
+	    visi[0]=1;
 	    while(!q.empty()){
-	        int temp=q.front();
+	        int t=q.front();
 	        q.pop();
-	       if(visi[temp]==0){
-	            res.push_back(temp);
-	        for(auto x:adj[temp]){
-	            if(!visi[x])
-	            q.push(x);
+	        res.push_back(t);
+	        for(auto x:adj[t]){
+	            if(!visi[x]){
+	                q.push(x);
+	                visi[x]=1;
+	            }
 	        }
-	        visi[temp]=1;
-	       }
 	    }
 	    return res;
 	}
 };
+

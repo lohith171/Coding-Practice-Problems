@@ -1,22 +1,20 @@
-//https://leetcode.com/problems/subsets-ii/
+//https://www.interviewbit.com/problems/subsets-ii/
 
-class Solution {
-public:
-    void solve(int ind,vector<int>v,vector<int>& nums,vector<vector<int>>& res){
-        res.push_back(v);
-        
-        for(int i=ind;i<nums.size();i++){
-            if(i!=ind && nums[i-1]==nums[i])continue;
-            v.push_back(nums[i]);
-            solve(i+1,v,nums,res);
-            v.pop_back();
-        }
+void solve(int ind,vector<int>& A,vector<int>v,vector<vector<int>>& res){
+    res.push_back(v);
+    for(int i=ind;i<A.size();i++){
+        if(i!=ind && A[i-1]==A[i])continue;
+        v.push_back(A[i]);
+        solve(i+1,A,v,res);
+        v.pop_back();
     }
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>>res;
-        vector<int>v;
-        sort(nums.begin(),nums.end());
-        solve(0,v,nums,res);
-        return res;
-    }
-};
+}
+
+
+vector<vector<int> > Solution::subsetsWithDup(vector<int> &A) {
+    sort(A.begin(),A.end());
+    vector<vector<int>>res;
+    vector<int>v;
+   solve(0,A,v,res);
+   return res;
+}

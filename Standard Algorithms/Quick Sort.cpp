@@ -1,3 +1,5 @@
+//Sort an array using quick sort.
+
 /*
    TC = O(nlogn) in best, avg and O(n*n) in worst case
    SC =O(1);
